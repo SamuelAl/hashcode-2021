@@ -1,0 +1,51 @@
+onion pepper olive; mushroom tomato basil                               6^2
+chicken mushroom pepper; chicken basil; tomato mushroom basil           5^2
+
+---------
+
+onion pepper olive, mushroom tomato basil, chicken mushroom pepper, chicken basil
+
+onion, pepper, olive, mushroom, tomato, basil, chicken
+0       1       2       3           4       5   6  
+
+0: 0000111
+1: 0001110
+2: 0011100
+3: 0111000
+4: 1100000
+
+Map<Long, List<Integer>>
+map.containsKey(code) map.get(code).add(pizzaid)
+
+0000111 -> 0, 1, 2 
+
+        
+        0000111 0001110  0011100  0111000  1100000  
+0000111  0          2       2        2         1
+0001110             0       
+0011100                     0
+0111000                              0      
+1100000                                        0
+
+function to encode the ingredients into bitset
+function to take in the list and get all the different ingredients into array
+function to calculate the difference between pizzas
+function to build the difference matrix
+solution to find best combinations
+
+StringBuilder solve
+teamsCounter = 0
+// team 4
+for (team = 0; team < team_4; team++) {
+        if (pizzas.size() >= 4) break
+        firstPizza = pizza.get(0);\
+        write(firstPizza)
+        for (int person = 0; person < 4; person++) {
+                nextPizza;
+                bestIngredients = getBestCombination(firstPizzaIngredients, nextPizza);
+                write(nextPizza)
+                firstPizza |= nextPizza
+        }
+        teamsCounter++;
+}
+

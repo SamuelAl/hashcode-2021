@@ -1,0 +1,110 @@
+FILE TO WRITE NOTES ON THE PROBLEM
+
+// FIRST APPROACH
+1) get all intersections 
+2) get streets coming in of each intersection
+3) for each intersection
+    for each street coming in  
+        give x seconds 
+
+
+hash map
+0 -> List<street coming out
+E
+
+// APPROACH 2
+main event PQ; minPQ 1 2 3
+Event(0, rue-de-londres)
+Event(0, rue-d-athenes)
+Event(1, rue-d-amsterdam)
+
+0
+1 rue-de-londres counter: 1
+1 rue-d-athenes counter: 1
+
+1
+
+MainEvent.add(new Event(1, rue-d-amsterdam))
+
+// So each car has a path we know
+// So we the intersections it has to travel
+// We could find a tally for each intersection of the number of cars that pass
+// Meaning a more heavily trafficked, so we would give that intersection more time
+
+-- count for each road total cars
+    -- hash map:
+    road name -> how many cars
+
+-- for each intersection
+    intersection -> list of roads
+    calculate total cars 1/3
+    1 road 1 road 2 
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     // solution of the problem
+        // variables
+        int simDuration, nIntersections, nStreets, nCars, bonusPointCar = 0;
+        
+        Map<Integer, List<String>> intersectionMap = new HashMap<Integer, List<String>>();
+        // Scan in variables on first line
+        Scanner scan = null;
+        try {
+            File myFile = new File(FILENAME);
+            scan = new Scanner(myFile);
+        }
+        catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+        simDuration = scan.nextInt();
+        nIntersections = scan.nextInt();
+        nStreets = scan.nextInt();
+        nCars = scan.nextInt();
+        bonusPointCar = scan.nextInt();
+
+        
+        // SAMUEL
+        for (int i = 0; i < nIntersections; i++) {
+            int start = scan.nextInt();
+            int finish = scan.nextInt();
+            String street = scan.next();
+            int time = scan.nextInt();
+
+            if (intersectionMap.containsKey(finish)) {
+                intersectionMap.get(finish).add(street);
+            }
+            else {
+                List<String> streetList = new LinkedList<String>();
+                streetList.add(street);
+                intersectionMap.put(finish, streetList);
+            }
+        }
+
+        String sol = scheduleIntersections(intersectionMap);
+        System.out.println(sol);
+        writeToFile(sol, FILENAME_SOL);
+        scan.close();
